@@ -1,0 +1,23 @@
+V6 — PROCUREMENT + CONSOLIDATION INTEGRATION
+
+Changes:
+1. Existing consolidation functionality is preserved.
+2. Consolidated items retain sourceRequisitionId and requesting College/Faculty/Department.
+3. Procurement-created consolidations are treated as NEW requisitions:
+   Procurement Market Survey -> VC -> Procurement Processing.
+4. Source requisitions remain linked through consolidatedInto/consolidatedAt and are not deleted.
+5. Existing detach-source behavior remains available while the consolidated record is still a draft.
+6. BOQ now displays requesting unit, requested unit cost, market unit cost, market total and procurement notes.
+7. Consolidated BOQs retain source requisition references.
+8. No tender/vendor/physical procurement workflow was added.
+
+TEST:
+- Create a consolidation from approved requisitions as Procurement.
+- Submit the new consolidated draft.
+- Confirm current step is Procurement Market Survey.
+- Edit every market unit cost and save.
+- Generate BOQ and confirm each item still shows its originating requesting unit.
+- Submit to VC.
+- Confirm VC sees requested price vs market price and source unit.
+- Approve as VC.
+- Confirm the consolidated requisition moves to Procurement Processing.

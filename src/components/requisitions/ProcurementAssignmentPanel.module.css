@@ -1,0 +1,18 @@
+.panel {
+  border: 1px solid var(--color-border, #ddd);
+  border-radius: 12px;
+  padding: 1rem;
+  background: var(--color-surface, #fff);
+  margin-bottom: 1rem;
+}
+.header h3 { margin: 0 0 .35rem; font-size: 1.05rem; }
+.header p { margin: 0; color: var(--color-text-muted, #666); line-height: 1.5; }
+.meta { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .75rem; margin: 1rem 0; }
+.meta div { display:flex; flex-direction:column; gap:.2rem; padding:.75rem; border-radius:8px; background: var(--color-background, #f7f7f7); }
+.meta strong { font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; }
+.meta span { font-weight:600; }
+.label { display:flex; flex-direction:column; gap:.4rem; margin-top:.9rem; font-weight:600; }
+.select, .textarea { width:100%; border:1px solid var(--color-border, #ccc); border-radius:8px; padding:.7rem; font:inherit; background:var(--color-surface, #fff); }
+.textarea { resize:vertical; }
+.actions { display:flex; justify-content:flex-end; margin-top:1rem; }
+@media (max-width: 640px) { .meta { grid-template-columns:1fr; } .actions button { width:100%; } }

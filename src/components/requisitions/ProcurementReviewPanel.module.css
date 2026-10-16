@@ -1,0 +1,44 @@
+.panel {
+  margin-bottom: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-color, #dee2e6);
+  border-radius: 12px;
+  background: var(--card-bg, #fff);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.header h3 { margin: 0 0 .35rem; }
+.header p { margin: 0; color: #6c757d; }
+
+.tableWrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; min-width: 900px; }
+.table th, .table td { padding: .7rem; border-bottom: 1px solid #e9ecef; vertical-align: middle; }
+.table th { font-size: .85rem; text-align: left; }
+
+.input, .textarea {
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 7px;
+  padding: .55rem .65rem;
+  background: #fff;
+}
+
+.input { min-width: 130px; }
+.label { display: block; margin-top: 1rem; font-weight: 600; }
+.textarea { margin-top: .4rem; font-weight: 400; resize: vertical; }
+.totalLabel { text-align: right; }
+.total { white-space: nowrap; }
+.actions { display: flex; justify-content: flex-end; gap: .75rem; margin-top: 1rem; flex-wrap: wrap; }
+
+@media (max-width: 700px) {
+  .header { flex-direction: column; }
+  .actions { justify-content: stretch; }
+  .actions > * { flex: 1; }
+}

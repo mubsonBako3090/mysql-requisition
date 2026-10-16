@@ -1,0 +1,27 @@
+.wrapper { display: flex; flex-direction: column; gap: 1rem; }
+.headingRow { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.heading { margin: 0; font-size: 1.35rem; font-weight: 700; }
+.subheading { margin: .35rem 0 0; color: var(--color-text-muted); font-size: .9rem; }
+.markAllButton { border: 1px solid var(--color-border); border-radius: var(--radius-sm); background: var(--color-surface); color: var(--color-text); padding: .55rem .8rem; cursor: pointer; font-weight: 600; font-size: .85rem; }
+.markAllButton:disabled { opacity: .5; cursor: not-allowed; }
+.hint { color: var(--color-text-muted); }
+.list { display: flex; flex-direction: column; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); overflow: hidden; }
+.item { display: flex; align-items: flex-start; gap: .85rem; padding: 1rem; border: 0; border-bottom: 1px solid var(--color-border); color: var(--color-text); text-align: left; text-decoration: none; background: transparent; }
+.item:last-child { border-bottom: 0; }
+.item:hover { background: var(--color-bg); }
+.itemButton { width: 100%; font: inherit; cursor: pointer; }
+.unread { background: color-mix(in srgb, var(--color-primary) 5%, var(--color-surface)); }
+.statusIcon { width: 2.25rem; height: 2.25rem; flex: 0 0 2.25rem; display: grid; place-items: center; border-radius: 50%; background: var(--color-bg); font-size: 1.05rem; }
+.info { color: var(--color-primary); }
+.success { color: #15803d; }
+.warning { color: #b45309; }
+.error { color: #b91c1c; }
+.notificationBody { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: .3rem; }
+.titleLine { display: flex; align-items: center; gap: .45rem; font-size: .92rem; }
+.message { font-size: .88rem; line-height: 1.5; overflow-wrap: anywhere; }
+.reference, .date { color: var(--color-text-muted); font-size: .78rem; }
+.unreadDot { width: .45rem; height: .45rem; border-radius: 50%; background: var(--color-accent); }
+.newLabel { color: var(--color-primary); font-size: .75rem; font-weight: 700; }
+.empty { display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: 3rem 1rem; color: var(--color-text-muted); border: 1px dashed var(--color-border); border-radius: var(--radius-md); text-align: center; }
+.empty i { font-size: 1.8rem; }
+.empty strong { color: var(--color-text); }

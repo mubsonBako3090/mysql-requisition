@@ -1,0 +1,91 @@
+PROCUREMENT WORKFLOW V4
+=======================
+
+Purpose
+-------
+Models the KASU Procurement Directorate/PMU structure only for the part of the project that is in scope:
+market survey, price adjustment, BOQ preparation, submission to VC, and post-VC processing.
+It does NOT implement tender execution, vendor award, delivery, Stores, GRN, or Bursary payment.
+
+Workflow
+--------
+HOD -> DEAN -> PROVOST -> PROCUREMENT INTAKE/ASSIGNMENT -> MARKET SURVEY -> VC -> PROCUREMENT PROCESSING
+
+Procurement staff positions
+---------------------------
+- Director of Procurement
+- Principal / Senior Procurement Officer
+- Procurement Officer I
+- Procurement Officer II
+- Administrative / Clerical Officer (defined for structure, not used for market survey)
+
+Important setup
+---------------
+1. Log in as System Administrator.
+2. Go to Users.
+3. Edit one Procurement account and set its Procurement position to:
+   Director of Procurement.
+4. Edit/create the staff who will actually conduct market surveys and set them to:
+   Principal / Senior Procurement Officer, Procurement Officer I, or Procurement Officer II.
+5. Log out and log back in as Procurement after changing the position so the client session receives the new position.
+
+How assignment works
+--------------------
+- After Provost approval, the requisition first lands with the Director of Procurement.
+- The Director (or Principal/Senior when authorized) assigns the market-survey work to a Principal/Senior or Procurement Officer I/II.
+- The assigned officer edits market-survey unit costs, records reasons/notes, generates the BOQ and submits to VC.
+- The same assigned officer is automatically set as the post-VC Procurement processing officer.
+- VC approval returns the requisition to that same officer for processing.
+
+Backward compatibility
+----------------------
+Existing Procurement users without procurementPosition are given the Mongoose default Procurement Officer II when loaded.
+If no Director account is configured, routing falls back to Principal/Senior, then another active Procurement account so existing installations do not immediately stop working.
+For the intended KASU workflow, configure a Director account before testing new requisitions.
+
+Main files changed
+------------------
+src/constants/procurement.js
+src/constants/roles.js
+src/models/User.js
+src/models/Requisition.js
+src/lib/auth.js
+src/lib/getCurrentUser.js
+src/lib/routing.js
+src/lib/validators/user.js
+src/services/userService.js
+src/services/approvalService.js
+src/app/api/auth/login/route.js
+src/app/api/requisitions/[id]/route.js
+src/app/api/requisitions/[id]/procurement-assign/route.js
+src/app/api/procurement/staff/route.js
+src/components/requisitions/ProcurementAssignmentPanel.jsx
+src/components/requisitions/ProcurementAssignmentPanel.module.css
+src/components/requisitions/ProcurementReviewPanel.jsx
+src/app/(main)/approvals/[id]/page.jsx
+src/app/(main)/users/invite/page.jsx
+src/app/(main)/users/[id]/page.jsx
+src/app/(main)/users/page.jsx
+src/components/dashboard/ProcurementDashboard.jsx
+
+Testing sequence
+----------------
+1. Create a normal requisition.
+2. HOD approves.
+3. Dean approves.
+4. Provost approves.
+5. Log in as Director of Procurement.
+6. Confirm the requisition appears in Procurement Intake.
+7. Open it and assign a Procurement Officer I/II (or Principal/Senior).
+8. Log in as the assigned officer.
+9. Confirm it appears in My Market Survey Queue.
+10. Change every market-survey unit cost and enter reasons.
+11. Save the market survey.
+12. Generate/view the BOQ.
+13. Submit to VC.
+14. Log in as VC and confirm the revised prices and BOQ are visible.
+15. VC approves.
+16. Log in as the assigned Procurement officer again.
+17. Confirm the requisition is in Ready for Processing.
+
+Do not delete the old GitHub project. Replace only the files in this bundle, commit, push and redeploy.
